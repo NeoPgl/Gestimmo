@@ -123,3 +123,5 @@ exports.removeAll = (req, res) => {
         else res.send({message: `All Appartements were deleted successfully!`});
     });
 };
+
+//test
