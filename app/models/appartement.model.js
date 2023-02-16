@@ -5,7 +5,7 @@ const Appartement = function (appartement) {
     this.id = appartement.id;
     this.num = appartement.num;
     this.superficie = appartement.superficie;
-    this.descrip = appartement.descrip;
+    this.description = appartement.description;
 };
 // connecting on each request so the server will start without a db connection, plus
 //   a simple mechanism enabling the app to recover from a momentary missing db connection
@@ -72,8 +72,13 @@ Appartement.findById = (appartementId, result) => {
 Appartement.updateById = (id, appartement, result) => {
     const dbConn = Appartement.dbConnect();
     dbConn.query(
-        "UPDATE appartements SET num = ?, superficie = ?, descrip = ? WHERE id = ?",
-        [appartement.num, appartement.superficie, appartement.descrip, id],
+        "UPDATE appartements SET num = ?, superficie = ?, description = ? WHERE id = ?",
+        [
+        appartement.num, 
+        appartement.superficie, 
+        appartement.description, 
+        id
+        ],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);

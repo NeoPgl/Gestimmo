@@ -12,21 +12,18 @@
         </tr>
         </thead>
         <tbody>
-        {{#suppliers}}
+        {{#appartements}}
         <tr>
-            <th scope="row">{{name}}</th>
-            <td>{{address}}</td>
-            <td>{{city}}</td>
-            <td>{{state}}</td>
-            <td>{{email}}</td>
-            <td>{{phone}}</td>
+            <th scope="row">{{num}}</th>
+            <td>{{superficie}}</td>
+            <td>{{description}}</td>
             <td><h4><span class="badge badge-info"><a class="text-light"
-                                                      href="/supplier-update/{{id}}">Modifier</a></span></h4></td>
+                                                      href="/appartement-update/{{id}}">Modifier</a></span></h4></td>
         </tr>
-        {{/suppliers}}
+        {{/appartements}}
         </tbody>
     </table>
-    <h4><a class="badge badge-success" href="/supplier-add">Ajouter un appartement</a></h4>
+    <h4><a class="badge badge-success" href="/appartement-add">Ajouter un appartement</a></h4>
 
 </div>
 {{>footer}}

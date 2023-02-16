@@ -7,11 +7,9 @@ const {body, validationResult} = require("express-validator");
 exports.create = [
 
     // Validate and sanitize the name field.
-    body('name', 'The appartement name is required').trim().isLength({min: 1}).escape(),
-    body('address', 'The appartement address is required').trim().isLength({min: 1}).escape(),
-    body('city', 'The appartement city is required').trim().isLength({min: 1}).escape(),
-    body('state', 'The appartement state is required').trim().isLength({min: 1}).escape(),
-    body('phone', 'Phone number should be 10 digit number plus optional country code').trim().isMobilePhone().escape(),
+    body('num', "Le numéro de l'appartement est requis").trim().isLength({min: 1}).escape(),
+    body('superficie', "La superficie de l'appartement est requis").trim().isLength({min: 1}).escape(),
+    body('description', 'The appartement city is required').trim().isLength({min: 1}).escape(),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -29,7 +27,7 @@ exports.create = [
             // Data from form is valid., save to db
             Appartement.create(appartement, (err, data) => {
                 if (err)
-                    res.render("500", {message: `Error occurred while creating the Appartement.`});
+                    res.render("500", {message: `Une erreur s'est produite lors de la création de l'appartement.`});
                 else res.redirect("/appartements");
             });
         }
@@ -39,7 +37,7 @@ exports.create = [
 exports.findAll = (req, res) => {
     Appartement.getAll((err, data) => {
         if (err)
-            res.render("500", {message: "The was a problem retrieving the list of appartements"});
+            res.render("500", {message: "Il y a eu un problème pour récupérer la liste des appartements"});
         else res.render("appartement-list-all", {appartements: data});
     });
 };
@@ -49,10 +47,10 @@ exports.findOne = (req, res) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send({
-                    message: `Not found appartement with id ${req.params.id}.`
+                    message: `Appartement introuvable avec id ${req.params.id}.`
                 });
             } else {
-                res.render("500", {message: `Error retrieving appartement with id ${req.params.id}`});
+                res.render("500", {message: `Appartement introuvable avec id ${req.params.id}`});
             }
         } else res.render("appartement-update", {appartement: data});
     });
@@ -62,11 +60,9 @@ exports.findOne = (req, res) => {
 exports.update = [
 
     // Validate and sanitize the name field.
-    body('name', 'The appartement name is required').trim().isLength({min: 1}).escape(),
-    body('address', 'The appartement address is required').trim().isLength({min: 1}).escape(),
-    body('city', 'The appartement city is required').trim().isLength({min: 1}).escape(),
-    body('state', 'The appartement state is required').trim().isLength({min: 1}).escape(),
-    body('phone', 'Phone number should be 10 digit number plus optional country code').trim().isMobilePhone().escape(),
+    body('num', 'The appartement name is required').trim().isLength({min: 1}).escape(),
+    body('superficie', 'The appartement address is required').trim().isLength({min: 1}).escape(),
+    body('description', 'The appartement city is required').trim().isLength({min: 1}).escape(),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -120,7 +116,7 @@ exports.removeAll = (req, res) => {
     Appartement.removeAll((err, data) => {
         if (err)
             res.render("500", {message: `Some error occurred while removing all appartements.`});
-        else res.send({message: `All Appartements were deleted successfully!`});
+        else res.send({message: `Tous les appartements ont été supprimés avec succès !`});
     });
 };
 

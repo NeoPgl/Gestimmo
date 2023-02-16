@@ -2,8 +2,8 @@
 let config = {
   APP_DB_HOST: "localhost",
   APP_DB_USER: "root",
-  APP_DB_PASSWORD: "",
-  APP_DB_NAME: "coffee"
+  APP_DB_PASSWORD: "root",
+  APP_DB_NAME: "gestimmo"
 }
 
 Object.keys(config).forEach(key => {

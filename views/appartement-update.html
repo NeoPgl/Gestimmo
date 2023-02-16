@@ -8,10 +8,10 @@
         </div>
         {{/errors}}
     </div>
-    {{#supplier}}
-    <form action="/supplier-update" method="POST">
+    {{#appartement}}
+    <form action="/appartement-update" method="POST">
         <input type="hidden" id="id" name="id" value="{{id}}">
-        {{>supplier-form-fields}}
+        {{>appartement-form-fields}}
         <button type="submit" class="btn btn-primary">Envoyer</button>
     </form>
 
@@ -31,11 +31,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Etes vous sur de vouloir supprimer cet appartement {{name}}?
+                    Etes vous sur de vouloir supprimer cet appartement {{num}}?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <form action="/supplier-remove/{{id}}" method="POST">
+                    <form action="/appartement-remove/{{id}}" method="POST">
                         <button type="submit" class="float-right btn btn-danger">Supprimer cet appartement</button>
                     </form>
                 </div>
@@ -44,7 +44,7 @@
     </div>
 
 
-    {{/supplier}}
+    {{/appartement}}
 
 </div>
 {{>footer}}
